@@ -14,4 +14,9 @@ package frc.robot;
  */
 public final class Constants {
     static final int driver_controller_port = 0;
+
+    public static final int right_main_motor_ID = 0;
+    public static final int right_secondary_motor_ID = 1;
+    public static final int left_main_motor_ID = 3;
+    public static final int left_secondary_motor_ID = 5;
 }
