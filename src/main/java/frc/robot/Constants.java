@@ -15,8 +15,9 @@ package frc.robot;
 public final class Constants {
     static final int driver_controller_port = 0;
 
-    public static final int right_main_motor_ID = 0;
-    public static final int right_secondary_motor_ID = 1;
-    public static final int left_main_motor_ID = 3;
-    public static final int left_secondary_motor_ID = 5;
+    public static final int RIGHT_LEADER_ID = 1;    // Right Leader Motor ID - Talon for SIM Motor
+    public static final int RIGHT_FOLLOWER_ID = 2;  // Right Follower Motor ID - Talon for SIM Motor
+    public static final int LEFT_LEADER_ID = 3;    // Left Leader Motor ID - Talon for SIM Motor
+    public static final int LEFT_FOLLOWER_ID = 4;   // Left Follower Motor ID - Talon for SIM Motor
+    public static final int CENTER_WHEEL_ID = 5;    // Center Wheel Motor ID - Talon
 }
