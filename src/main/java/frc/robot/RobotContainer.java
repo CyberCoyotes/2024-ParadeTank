@@ -4,25 +4,24 @@
 
 package frc.robot;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.DriveCommand;
-import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.commands.DriveCommand2;
+import frc.robot.subsystems.DriveSubsystem2;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 
 
 public class RobotContainer {
-  private XboxController d_Controller = new XboxController(Constants.driver_controller_port);
+  private XboxController driveController = new XboxController(Constants.driver_controller_port);
   
 
-  private final DriveSubsystem m_driveSubsystem = new DriveSubsystem();
+  private final DriveSubsystem2 m_driveSubsystem = new DriveSubsystem2();
 
 
  
   public RobotContainer() {
     
   
-    m_driveSubsystem.setDefaultCommand(new DriveCommand(m_driveSubsystem, d_Controller::getLeftY, d_Controller::getRightX)
-    );
+    m_driveSubsystem.setDefaultCommand(new DriveCommand2(m_driveSubsystem, driveController));
   }
 
   public Command getAutonomousCommand() {

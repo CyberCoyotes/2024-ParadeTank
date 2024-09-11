@@ -1,6 +1,13 @@
+/*
+ * This command will drive the robot using the drive and turn power values from the joysticks.
+ * The left thumbstick will control the forward and backward movement of the robot.
+ * The right thumbstick will control the rotation of the robot. 
+ */
+
 package frc.robot.commands;
 
 import java.util.function.DoubleSupplier;
+
 import edu.wpi.first.wpilibj2.command.Command; // Command has replaced CommandBase
 import frc.robot.subsystems.DriveSubsystem;
 

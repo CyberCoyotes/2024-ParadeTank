@@ -7,6 +7,10 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class DriveSubsystem extends SubsystemBase {
+    /**
+     * The DifferentialDrive class represents a drivetrain with two motors, allowing for differential steering.
+     * It provides methods for controlling the drivetrain's movement and rotation.
+     */
     private final DifferentialDrive drive;
     private final WPI_TalonSRX rightLeaderDrive;
     private final WPI_TalonSRX rightFollowerDrive;
@@ -20,7 +24,12 @@ public class DriveSubsystem extends SubsystemBase {
         leftLeaderDrive = new WPI_TalonSRX(Constants.LEFT_LEADER_ID);
         leftFollowerDrive = new WPI_TalonSRX(Constants.LEFT_FOLLOWER_ID);
 
-        motors = new WPI_TalonSRX[]{rightLeaderDrive, rightFollowerDrive, leftLeaderDrive, leftFollowerDrive};
+        motors = new WPI_TalonSRX[]{
+            rightLeaderDrive, 
+            rightFollowerDrive,
+            leftLeaderDrive,
+            leftFollowerDrive
+        };
 
         configureMotors();
         drive = new DifferentialDrive(rightLeaderDrive, leftLeaderDrive);
@@ -28,16 +37,16 @@ public class DriveSubsystem extends SubsystemBase {
 
     private void configureMotors() {
         rightLeaderDrive.setInverted(true);
-        rightFollowerDrive.setInverted(true);
+        rightFollowerDrive.setInverted(false);
         leftLeaderDrive.setInverted(false);
-        leftFollowerDrive.setInverted(false);
+        leftFollowerDrive.setInverted(true);
 
         for (WPI_TalonSRX motor : motors) {
             motor.configFactoryDefault();
         }
 
-        rightFollowerDrive.set(TalonSRXControlMode.Follower, rightLeaderDrive.getDeviceID());
-        leftFollowerDrive.set(TalonSRXControlMode.Follower, leftLeaderDrive.getDeviceID());
+        // rightFollowerDrive.set(TalonSRXControlMode.Follower, rightLeaderDrive.getDeviceID());
+        // leftFollowerDrive.set(TalonSRXControlMode.Follower, leftLeaderDrive.getDeviceID());
     }
 
     public void drive(double drivePower, double turnPower) {
