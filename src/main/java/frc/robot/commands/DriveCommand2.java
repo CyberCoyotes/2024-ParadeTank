@@ -29,6 +29,10 @@ public class DriveCommand2 extends Command {
 
         // Assuming the rotation is controlled by the X-axis of the right thumbstick
         double turnPower = joystick.getRawAxis(4); 
+
+        // Added for debugging purposes
+        // System.out.println("Drive Power: " + drivePower + ", Turn Power: " + turnPower);
+
         subsystem.drive(drivePower, turnPower);
     }
 }
