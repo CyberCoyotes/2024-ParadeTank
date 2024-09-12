@@ -25,7 +25,7 @@ public class DriveCommand2 extends Command {
     public void execute() {
         // Assuming the forward/backward movement is controlled by the Y-axis of the left thumbstick
         // Negative value had the robot moving backwards
-        double drivePower = joystick.getRawAxis(1); 
+        double drivePower = -joystick.getRawAxis(1); 
 
         // Assuming the rotation is controlled by the X-axis of the right thumbstick
         double turnPower = joystick.getRawAxis(4); 

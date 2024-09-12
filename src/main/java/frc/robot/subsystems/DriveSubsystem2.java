@@ -29,10 +29,10 @@ public class DriveSubsystem2 extends SubsystemBase {
         leftLeaderMotor = new WPI_TalonSRX(Constants.LEFT_LEADER_ID);
         leftFollowerMotor = new WPI_TalonSRX(Constants.LEFT_FOLLOWER_ID);
 
-        rightLeaderMotor.setInverted(false);
-        rightFollowerMotor.setInverted(true);
-        leftLeaderMotor.setInverted(true);
-        leftFollowerMotor.setInverted(false);
+        rightLeaderMotor.setInverted(true);
+        rightFollowerMotor.setInverted(false);
+        leftLeaderMotor.setInverted(false);
+        leftFollowerMotor.setInverted(true);
 
         rightFollowerMotor.follow(rightLeaderMotor);
         leftFollowerMotor.follow(leftLeaderMotor);
