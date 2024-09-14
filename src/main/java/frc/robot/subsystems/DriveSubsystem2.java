@@ -1,4 +1,4 @@
-/* 
+/********************** 
 Subsystem for the drive train. 
 This is the second version of the drive train subsystem. 
 It should setup a right side and left side with two motors each.
@@ -7,7 +7,7 @@ The right side Leader motor and left side follow motor should not inverted.
 The left side Leader motor and right side follow motor should be inverted.
 The left thumbstick will control the forward and backward movement of the robot.
 The right thumbstick will control the rotation of the robot.
-*/
+***********************/
 
 package frc.robot.subsystems;
 
@@ -16,6 +16,10 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
+/**
+ * Represents the drive subsystem of the robot.
+ * This subsystem controls the robot's drive motors and allows it to move and rotate.
+ */
 public class DriveSubsystem2 extends SubsystemBase {
     private final DifferentialDrive drive;
     private final WPI_TalonSRX rightLeaderMotor;
