@@ -13,6 +13,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -38,6 +39,7 @@ public class DriveSubsystem2 extends SubsystemBase {
         leftLeaderMotor.setInverted(true);
         leftFollowerMotor.setInverted(false);
 
+     
         rightFollowerMotor.follow(rightLeaderMotor);
         leftFollowerMotor.follow(leftLeaderMotor);
 
