@@ -11,6 +11,7 @@ The right thumbstick will control the rotation of the robot.
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -33,6 +34,11 @@ public class DriveSubsystem2 extends SubsystemBase {
         rightFollowerMotor.setInverted(false);
         leftLeaderMotor.setInverted(false);
         leftFollowerMotor.setInverted(true);
+
+        rightLeaderMotor.setNeutralMode(NeutralMode.Coast);
+        rightFollowerMotor.setNeutralMode(NeutralMode.Coast);
+        leftLeaderMotor.setNeutralMode(NeutralMode.Coast);
+        leftFollowerMotor.setNeutralMode(NeutralMode.Coast);
 
         rightFollowerMotor.follow(rightLeaderMotor);
         leftFollowerMotor.follow(leftLeaderMotor);
