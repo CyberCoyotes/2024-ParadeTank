@@ -12,9 +12,9 @@ The right thumbstick will control the rotation of the robot.
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix6.controls.Follower;
+import com.ctre.phoenix6.hardware.TalonFX;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -24,30 +24,32 @@ import frc.robot.Constants;
  */
 public class DriveSubsystem2 extends SubsystemBase {
     private final DifferentialDrive drive;
-    private final WPI_TalonSRX rightLeaderMotor;
-    private final WPI_TalonSRX rightFollowerMotor;
-    private final WPI_TalonSRX leftLeaderMotor;
-    private final WPI_TalonSRX leftFollowerMotor;
+    private final TalonFX rightLeaderMotor;
+    private final TalonFX rightFollowerMotor;
+    private final TalonFX leftLeaderMotor;
+    private final TalonFX leftFollowerMotor;
 
     public DriveSubsystem2() {
-        rightLeaderMotor = new WPI_TalonSRX(Constants.RIGHT_LEADER_ID);
-        rightFollowerMotor = new WPI_TalonSRX(Constants.RIGHT_FOLLOWER_ID);
-        leftLeaderMotor = new WPI_TalonSRX(Constants.LEFT_LEADER_ID);
-        leftFollowerMotor = new WPI_TalonSRX(Constants.LEFT_FOLLOWER_ID);
+        rightLeaderMotor = new TalonFX(Constants.RIGHT_LEADER_ID);
+        rightFollowerMotor = new TalonFX(Constants.RIGHT_FOLLOWER_ID);
+        leftLeaderMotor = new TalonFX(Constants.LEFT_LEADER_ID);
+        leftFollowerMotor = new TalonFX(Constants.LEFT_FOLLOWER_ID);
 
         rightLeaderMotor.setInverted(true);
         rightFollowerMotor.setInverted(false);
         leftLeaderMotor.setInverted(false);
         leftFollowerMotor.setInverted(true);
 
-        rightLeaderMotor.setNeutralMode(NeutralMode.Coast);
-        rightFollowerMotor.setNeutralMode(NeutralMode.Coast);
-        leftLeaderMotor.setNeutralMode(NeutralMode.Coast);
-        leftFollowerMotor.setNeutralMode(NeutralMode.Coast);
+        // rightLeaderMotor.setNeutralMode(NeutralMode.Coast);
+        // rightFollowerMotor.setNeutralMode(NeutralMode.Coast);
+        // leftLeaderMotor.setNeutralMode(NeutralMode.Coast);
+        // leftFollowerMotor.setNeutralMode(NeutralMode.Coast);
 
      
-        rightFollowerMotor.follow(rightLeaderMotor);
-        leftFollowerMotor.follow(leftLeaderMotor);
+        // rightFollowerMotor.follow(rightLeaderMotor);
+        rightFollowerMotor.setControl(new Follower(rightLeaderMotor.getDeviceID(), false));
+        leftFollowerMotor.setControl(new Follower(leftLeaderMotor.getDeviceID(), false));
+        // leftFollowerMotor.follow(leftLeaderMotor);
 
         drive = new DifferentialDrive(leftLeaderMotor, rightLeaderMotor);
     }

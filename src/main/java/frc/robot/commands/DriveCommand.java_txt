@@ -8,6 +8,7 @@ package frc.robot.commands;
 
 import java.util.function.DoubleSupplier;
 
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command; // Command has replaced CommandBase
 import frc.robot.subsystems.DriveSubsystem;
 
@@ -22,6 +23,11 @@ public class DriveCommand extends Command {
         this.drivePower = drivePower;
         this.turnPower = turnPower;
         addRequirements(this.subsystem);
+    }
+
+    public DriveCommand(DriveSubsystem m_driveSubsystem, XboxController driveController) {
+        this.drivePower = null;
+        //TODO Auto-generated constructor stub
     }
 
     @Override
