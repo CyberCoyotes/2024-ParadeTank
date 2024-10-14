@@ -23,17 +23,22 @@ public class DriveCommand2 extends Command {
 
     @Override
     public void execute() {
-        // Assuming the forward/backward movement is controlled by the Y-axis of the left thumbstick
-        // Negative value had the robot moving backwards
-        double drivePower = -joystick.getRawAxis(1); 
+        // Apply a deadband to filter out small, unintended joystick movements
+        double drivePower = applyDeadband(-joystick.getRawAxis(1), 0.1);
+        double turnPower = applyDeadband(joystick.getRawAxis(4), 0.1);
 
-        // Assuming the rotation is controlled by the X-axis of the right thumbstick
-        double turnPower = joystick.getRawAxis(4); 
-
-        // Added for debugging purposes
-        // System.out.println("Drive Power: " + drivePower + ", Turn Power: " + turnPower);
+        // Optional: Apply exponential scaling for finer control
+        drivePower = Math.copySign(Math.pow(Math.abs(drivePower), 2), drivePower);
+        turnPower = Math.copySign(Math.pow(Math.abs(turnPower), 2), turnPower);
 
         subsystem.drive(drivePower, turnPower);
-
     }
+
+    private double applyDeadband(double value, double deadband) {
+        if (Math.abs(value) < deadband) {
+            return 0;
+        }
+        return (value - Math.copySign(deadband, value)) / (1.0 - deadband);
+    }
+
 }
